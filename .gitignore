@@ -1,3 +1,6 @@
 
 #ignore any local config
 .json
+
+# my notes
+.txt

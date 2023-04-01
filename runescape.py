@@ -39,10 +39,12 @@ def get_rs_combat_data() -> str:
     processed_users: list[object] = _init_data_objects()
     row: list = [str]
     t: PrettyTable = PrettyTable(['Skill'] + list(rs_users))
+    print(combat_skills)
     for i,skillstring in enumerate(combat_skills):
         row = []
         row.append(skillstring)
         for user in processed_users:
+            print(skillstring)
             row.append(user["runescape_stats"].skill(skillstring,"level"))
         t.add_row(row)
     return t.get_string()
@@ -67,20 +69,4 @@ def get_rs_basic_data(is_random: bool=False) -> list[str]:
 
     return output_stream
 
-
-
-'''
-user = Hiscores('Zezima')
-
-# Lets display some information
-print("Current level:", user.skill('attack', 'level'))
-print("Current rank:", user.skill('attack', 'rank'))
-print("Current exp:", user.skill('attack', 'experience'))
-print("Exp remaining:", user.skill('attack','exp_to_next_level'))
-
-# Lets display some Boss information
-print("Wintertodt Kills:", user.boss("wintertodt", "score"))
-
-# Lets display some Clue Hiscores
-print("Medium clues done:", user.clue("medium", "score"))
-'''
+print(get_rs_combat_data())
