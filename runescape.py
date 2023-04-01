@@ -2,16 +2,10 @@ from OSRSBytes import Hiscores
 import typing
 import random
 from prettytable import PrettyTable
-
-
-
-
-
-
 #Zezima, Chairboy
 skills: list = ['Attack', 'Defense', 'Strength', 'Hitpoints', 'Ranged', 'Prayer', 'Magic', 'Cooking', 'Woodcutting', 'Fletching', 'Fishing', 'Firemaking', 'Crafting', 'Smithing', 'Mining', 'Herblaw']
 dimension: set = {"level","rank"}
-combat_skills: list = ['Attack', 'Defense', 'Strength', 'Hitpoints', 'Ranged']
+combat_skills: list = ['Attack', 'Defense', 'Strength', 'Hitpoints', 'Ranged', 'Magic', 'Prayer']
 rs_users: set = {"Chairboy","42 DEF MAIN","Jimbobuckets"}
 
 #TODO: write extraction loop
