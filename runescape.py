@@ -12,7 +12,7 @@ from prettytable import PrettyTable
 skills: list = ['Attack', 'Defense', 'Strength', 'Hitpoints', 'Ranged', 'Prayer', 'Magic', 'Cooking', 'Woodcutting', 'Fletching', 'Fishing', 'Firemaking', 'Crafting', 'Smithing', 'Mining', 'Herblaw']
 dimension: set = {"level","rank"}
 combat_skills: list = ['Attack', 'Defense', 'Strength', 'Hitpoints', 'Ranged']
-rs_users: set = {"Chairboy","42 DEF MAIN","Libsnowflake"}
+rs_users: set = {"Chairboy","42 DEF MAIN","Jimbobuckets"}
 
 #TODO: write extraction loop
 #https://docs.google.com/spreadsheets/d/1jljLiuTqcUsTWaNoTxvuS5FhRmXWFj0n5dk9Ac-M43A/edit#gid=0
@@ -39,12 +39,10 @@ def get_rs_combat_data() -> str:
     processed_users: list[object] = _init_data_objects()
     row: list = [str]
     t: PrettyTable = PrettyTable(['Skill'] + list(rs_users))
-    print(combat_skills)
     for i,skillstring in enumerate(combat_skills):
         row = []
         row.append(skillstring)
         for user in processed_users:
-            print(skillstring)
             row.append(user["runescape_stats"].skill(skillstring,"level"))
         t.add_row(row)
     return t.get_string()
@@ -68,5 +66,3 @@ def get_rs_basic_data(is_random: bool=False) -> list[str]:
         output_stream.append(f":arrow_right: {user['name']}: {chosen_skill} Level of {user['runescape_stats'].skill(chosen_skill,'level')}")
 
     return output_stream
-
-print(get_rs_combat_data())
