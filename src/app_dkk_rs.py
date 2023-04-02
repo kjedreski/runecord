@@ -1,5 +1,5 @@
 import discord
-import runescape
+from runescape import RuneScapeData
 import os
 
 intents = discord.Intents.default()
@@ -18,13 +18,14 @@ async def on_message(message):
         return
 
     if message.content == '!runescape':
-        # Code to handle the command goes here
+        rc = RuneScapeData()
         await message.channel.send(':scroll: Current Runescape Random Stat for DKK Members :scroll:\n')
-        for stream_log in runescape.get_rs_basic_data(is_random=True):
+        for stream_log in rc.get_rs_basic_data(is_random=True):
             await message.channel.send(stream_log)
     
     if message.content == '!runescape -combat':
-        await message.channel.send(f"```\n{runescape.get_rs_combat_data()}\n```")
+        rc = RuneScapeData()
+        await message.channel.send(f"```\n{rc.get_rs_combat_data()}\n```")
 
 
 discord_token =  os.environ.get('discord_token')

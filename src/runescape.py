@@ -26,7 +26,7 @@ class RuneScapeData:
             return False
 
     def _read_users_file(self) -> list[str]:
-        filename: str = "users.csv"
+        filename: str = "src/users.csv"
         data: list = []
         with open(filename, "r") as file:
             reader = csv.reader(file)
