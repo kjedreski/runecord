@@ -82,6 +82,3 @@ class RuneScapeData:
             output_stream.append(f":arrow_right: {user['name']}: {chosen_skill} Level of {user['runescape_stats'].skill(chosen_skill,'level')}")
 
         return output_stream
-    
-rc = RuneScapeData()
-print(rc.get_rs_combat_data())
