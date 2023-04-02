@@ -2,7 +2,6 @@ from OSRSBytes import Hiscores
 import typing
 import random
 from prettytable import PrettyTable
-from runescape_db import RuneScapeDB
 import datetime
 import csv
 import requests

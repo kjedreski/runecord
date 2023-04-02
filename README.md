@@ -2,6 +2,10 @@
 
 ## Discord bot for runescape analytics and stats.
 
+### setup:
+Make sure to add runescape names and new file to src/users.csv
+
+
 ### Current bot commands:
 ```
 !runescape
@@ -20,3 +24,4 @@ Coming soon:
 #show thorough stats such as delta tracking
 
 ```
+
