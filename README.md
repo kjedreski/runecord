@@ -4,6 +4,11 @@
 
 ### setup:
 Make sure to add runescape names and new file to src/users.csv
+Make a environmental variable in os for <discord_token>
+Linux
+```
+export discord_token=<value>
+```
 
 
 ### Current bot commands:
