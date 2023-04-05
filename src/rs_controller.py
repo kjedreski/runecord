@@ -7,6 +7,15 @@ import csv
 import requests
 
 
+class PlayerProfile:
+
+    def __init__(self,name:str) -> None:
+        self.name: str = name
+        self.skills: list[object] = []
+
+    def add_skill(self, skill: object) -> None:
+        self.skills.append(skill)
+
 
 class RuneScapeData:
 
@@ -59,12 +68,10 @@ class RuneScapeData:
     def get_all_data(self) -> list:
         ret_payload: list[object] = []
         for user in self.processed_users:
-            player_profile: object = {}
-            player_profile["name"] = user["name"]
-            player_profile["skills"] = []
+            player_profile: PlayerProfile = PlayerProfile(name=user["name"])
             for i,skillstring in enumerate(self.skills):
                 rs_stat = user["runescape_stats"].skill(skillstring,"level")
-                player_profile["skills"].append({skillstring:rs_stat})
+                player_profile.add_skill(skill={skillstring:rs_stat})
             ret_payload.append(player_profile)
         return ret_payload
 
