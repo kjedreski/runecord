@@ -7,6 +7,16 @@ import csv
 import requests
 
 
+class PlayerProfile:
+
+    def __init__(self,name:str) -> None:
+        self.name: str = name
+        self.skills: list[object] = []
+
+    def add_skill(self, skill: object) -> None:
+        self.skills.append(skill)
+
+
 class RuneScapeData:
 
     def __init__(self) -> None:
@@ -26,7 +36,7 @@ class RuneScapeData:
             return False
 
     def _read_users_file(self) -> list[str]:
-        filename: str = "src/users.csv"
+        filename: str = "users.csv"
         data: list = []
         with open(filename, "r") as file:
             reader = csv.reader(file)
@@ -55,6 +65,17 @@ class RuneScapeData:
             tmp_processed_users.append(user_data)
         return tmp_processed_users
     
+    def get_all_data(self) -> list:
+        ret_payload: list[object] = []
+        for user in self.processed_users:
+            player_profile: PlayerProfile = PlayerProfile(name=user["name"])
+            for i,skillstring in enumerate(self.skills):
+                rs_stat = user["runescape_stats"].skill(skillstring,"level")
+                player_profile.add_skill(skill={skillstring:rs_stat})
+            ret_payload.append(player_profile)
+        return ret_payload
+
+
     def get_rs_combat_data(self) -> str:
         row: list = [str]
         t: PrettyTable = PrettyTable(['Skill'] + list(self.rs_users))
