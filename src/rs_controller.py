@@ -5,6 +5,7 @@ from prettytable import PrettyTable
 import datetime
 import csv
 import requests
+from rs_model import RunescapeDB 
 
 
 class PlayerProfile:
@@ -74,6 +75,18 @@ class RuneScapeData:
                 player_profile.add_skill(skill={skillstring:rs_stat})
             ret_payload.append(player_profile)
         return ret_payload
+
+    def get_delta(self) -> str:
+        #row: list = [str]
+        t: PrettyTable = PrettyTable(['Player','Skill','Delta'])
+        db: RunescapeDB = RunescapeDB()
+        db_results: list[tuple] = db.get_delta()
+        for row in db_results:
+            row = list(row)
+            row[2] = "+" + str(row[2])
+            t.add_row(row)
+        return t.get_string()
+
 
 
     def get_rs_combat_data(self) -> str:
