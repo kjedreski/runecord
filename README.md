@@ -11,6 +11,7 @@ export discord_token=<value>
 ```
 
 
+
 ### Current bot commands:
 ```
 !runescape
@@ -18,15 +19,12 @@ export discord_token=<value>
 
 !runescape -combat
 # displays all combat stats for all users
-```
 
-Coming soon:
-```
 !runescape -help
 #show available commands
 
-!runescape -report
-#show thorough stats such as delta tracking
+!runescape -delta
+#show skill changes in last day.
 
 ```
 
