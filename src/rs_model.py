@@ -1,6 +1,6 @@
 import sqlite3
 import typing
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class RunescapeDB:
     conn: sqlite3 = sqlite3.connect('runescape.db')
@@ -78,6 +78,27 @@ class RunescapeDB:
         '''
         self.conn.execute(insert_sql)
         self.conn.commit()
+
+    def get_delta(self) -> list[tuple]:
+        current_date: str = datetime.now().strftime('%Y/%m/%d')
+        yesterday: datetime = datetime.now() - timedelta(days=1)
+        yesterday_date: str = yesterday.strftime('%Y/%m/%d')
+        insert_sql: str = f'''
+        SELECT p.Name, s.Name, Level - COALESCE((SELECT Level FROM fact_levels WHERE PID = p.PID AND SID = s.SID AND TS = '{yesterday_date}'), 0) AS Delta
+        FROM fact_levels l 
+        INNER JOIN dim_players p ON p.PID = l.PID
+        INNER JOIN dim_skills s ON s.SID = l.SID
+        WHERE TS = '{current_date}' AND Delta > 0
+        '''
+        # Create cursor object
+        cursor = self.conn.cursor()
+        # Execute SELECT query
+        cursor.execute(insert_sql)
+        # Fetch results
+        results = cursor.fetchall()
+        # Close cursor and connection
+        cursor.close()
+        return results
 
     def insert_ranks(self) -> None:
         pass
