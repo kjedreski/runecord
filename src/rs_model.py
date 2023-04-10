@@ -41,10 +41,6 @@ class RunescapeDB:
     def __init__(self) -> None:
         self._init_ddl()
 
-    #destructor
-    def __del__(self) -> None:
-        self.conn.close()
-
     def close(self) -> None:
         self.conn.close()
 
@@ -96,8 +92,6 @@ class RunescapeDB:
         cursor.execute(insert_sql)
         # Fetch results
         results = cursor.fetchall()
-        # Close cursor and connection
-        cursor.close()
         return results
 
     def insert_ranks(self) -> None:
