@@ -12,6 +12,14 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print('Bot is ready.')
 
+
+@client.event
+async def on_member_join(member):
+    channel = discord.utils.get(member.guild.channels, name="general")
+    if channel:
+        await channel.send(f"Welcome to the server, {member.mention}!")
+
+
 @client.event
 async def on_message(message):
     if message.author == client.user:
