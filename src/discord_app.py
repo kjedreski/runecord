@@ -40,9 +40,16 @@ async def on_message(message):
         await message.channel.send("All stat changes in the past 24 hours from 12pm est to 12pm est")
         await message.channel.send(f"```\n{rc.get_delta()}\n```")
 
-    if message.content == '!runescape -help':
+    if message.content == '!help':
         rc = RuneScapeData()
-        await message.channel.send("All current runescape bot commands\n'!runescape'\n'!runescape -combat'\n'!runescape -delta'\n")
+        await message.channel.send("All current DKK bot commands\n'!runescape'\n'!runescape -combat'\n'!runescape -delta'\n '!champions'\n")
+    
+    if message.content == '!champions':
+        rc = RuneScapeData()
+        await message.channel.send(f"```\n{rc.get_champions()}\n```")
+
+    if message.content == '!icebreaker':
+        pass
 
 discord_token =  os.environ.get('discord_token')
 client.run(discord_token)
