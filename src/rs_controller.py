@@ -91,8 +91,9 @@ class RuneScapeData:
     def get_champions(self) -> str:
         row: list = [str]
         t: PrettyTable = PrettyTable(['Name','Dom Toppings'])
-        t.add_row(['sV_marcus','x1'])
-        t.add_row(['JellyBeanCat','x1'])
+        t.add_row(['sV_marcus','x2'])
+        t.add_row(['JellyBeanCat','x2'])
+        t.add_row(['Nat','x1'])
         return t.get_string()
 
     def get_rs_combat_data(self) -> str:
