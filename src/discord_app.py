@@ -17,7 +17,7 @@ async def on_ready():
 async def on_member_join(member):
     channel = discord.utils.get(member.guild.channels, name="general")
     if channel:
-        await channel.send(f"Welcome to the server, {member.mention}!")
+        await channel.send(f"Welcome to clan DKK, {member.mention}! Any questions? Hit up Chairboy, icepick or tiger")
 
 
 @client.event
