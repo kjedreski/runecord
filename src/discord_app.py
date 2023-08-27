@@ -10,8 +10,6 @@ intents.members = True
 
 client = discord.Client(intents=intents)
 
-dkk = DKKData()
-
 bot = commands.Bot(command_prefix='>', intents=intents)
 
 class MyView(discord.ui.View): # Create a class called MyView that subclasses discord.ui.View
