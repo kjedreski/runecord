@@ -2,7 +2,6 @@ from discord import ButtonStyle, Button
 from discord.ext import commands
 import discord
 from rs_controller import RuneScapeData
-from dkk_controller import DKKData
 import os
 
 
