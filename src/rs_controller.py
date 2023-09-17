@@ -95,6 +95,9 @@ class RuneScapeData:
         t.add_row(['JellyBeanCat','x2'])
         t.add_row(['Nat','x1'])
         t.add_row(['sayso','x1'])
+        t.add_row(['PhX.FeaRKiLLeR','x1'])
+        t.add_row(['Jinvvar','x1'])
+        t.add_row(['icepick','x1'])
         return t.get_string()
 
     def get_rs_combat_data(self) -> str:
